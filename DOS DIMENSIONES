@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define FILAS 9
+#define COLUMNAS 9
+
+// Función para imprimir la matriz
+void imprimirMatriz(int matriz[][COLUMNAS]) {
+    printf("Matriz:\n");
+    for (int i = 0; i < FILAS; i++) {
+        for (int j = 0; j < COLUMNAS; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+// Función para buscar un número en la matriz
+void buscarNumero(int matriz[][COLUMNAS], int numero) {
+    int encontrado = 0;
+    for (int i = 0; i < FILAS; i++) {
+        for (int j = 0; j < COLUMNAS; j++) {
+            if (matriz[i][j] == numero) {
+                printf("Valor encontrado en la posición [%d][%d].\n", i, j);
+                encontrado = 1;
+            }
+        }
+    }
+    if (!encontrado) {
+        printf("No encontrado.\n");
+    }
+}
+
+int main() {
+    int matriz[FILAS][COLUMNAS];
+    // Llenar la matriz con números aleatorios
+    for (int i = 0; i < FILAS; i++) {
+        for (int j = 0; j < COLUMNAS; j++) {
+            matriz[i][j] = rand() % 100; // Números aleatorios entre 0 y 99
+        }
+    }
+
+    // Imprimir la matriz
+    imprimirMatriz(matriz);
+
+    int numero;
+    printf("Ingrese un número a buscar: ");
+    scanf("%d", &numero);
+
+    // Buscar el número ingresado
+    buscarNumero(matriz, numero);
+
+    return 0;
+}
