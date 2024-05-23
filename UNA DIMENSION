@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TAMAÑO_ARREGLO 88
+
+// Función para imprimir el arreglo
+void imprimirArreglo(int arreglo[], int tamaño) {
+    printf("Arreglo: ");
+    for (int i = 0; i < tamaño; i++) {
+        printf("%d ", arreglo[i]);
+    }
+    printf("\n");
+}
+
+// Función para buscar un número en el arreglo
+void buscarNumero(int arreglo[], int tamaño, int numero) {
+    int encontrado = 0;
+    for (int i = 0; i < tamaño; i++) {
+        if (arreglo[i] == numero) {
+            printf("Valor encontrado en la posición %d.\n", i);
+            encontrado = 1;
+            break;
+        }
+    }
+    if (!encontrado) {
+        printf("No encontrado.\n");
+    }
+}
+
+int main() {
+    int arreglo[TAMAÑO_ARREGLO];
+    // Llenar el arreglo con números aleatorios
+    for (int i = 0; i < TAMAÑO_ARREGLO; i++) {
+        arreglo[i] = rand() % 1000; // Números aleatorios entre 0 y 999
+    }
+
+    // Imprimir el arreglo
+    imprimirArreglo(arreglo, TAMAÑO_ARREGLO);
+
+    int numero;
+    printf("Ingrese un número a buscar: ");
+    scanf("%d", &numero);
+
+    // Buscar el número ingresado
+    buscarNumero(arreglo, TAMAÑO_ARREGLO, numero);
+
+    return 0;
+}
